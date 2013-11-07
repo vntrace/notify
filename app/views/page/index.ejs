@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ROOM</title>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/js/socket.io.js"></script>
+	<style type="text/css">
+	#client {
+		width: 100%;
+		height: 100%;
+	}
+	</style>
+</head>
+<body>
+
+<div id="client">
+	<h3 class="count"></h3>
+</div>
+
+<script type="text/javascript">
+	var socket = io.connect('http://localhost:5000');
+	socket.on('connection', function(data){
+		$('#client .count').html(data.clients);
+	});
+</script>
+</body>
+</html>
